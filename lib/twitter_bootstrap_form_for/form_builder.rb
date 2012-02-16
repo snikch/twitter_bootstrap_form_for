@@ -67,12 +67,12 @@ class TwitterBootstrapFormFor::FormBuilder < ActionView::Helpers::FormBuilder
   # to the supplied block.
   #
   def inline(label = nil, options = {}, &block)
-    template.content_tag(:div, :class => ['clearfix',(
+    template.content_tag(:div, :class => ['clearfix control-group',(
       options[:attributes] && options[:attributes].any?{ |e| !!self.object.errors.include?(e) } ? 'error' : nil
     )].compact.join(' ')) do
       template.concat template.content_tag(:label, label) if label.present?
       template.concat template.content_tag(:div, :class => 'input') {
-        template.content_tag(:div, :class => 'inline-inputs') do
+        template.content_tag(:div, :class => 'controls') do
           template.fields_for(
             self.object_name,
             self.object,
